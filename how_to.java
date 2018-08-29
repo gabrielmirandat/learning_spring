@@ -35,7 +35,7 @@ There are two other Maven lifecycles of note beyond the default list above. They
 //########################################################################################################################## 
 
 * Spring = dependency injection + loosely coupling
-* wiring = classes dependentes, toda classe dependende precisa de "@Autowired" no código
+* wiring = classes dependentes, toda classe dependente precisa de "@Autowired" no código
     o Wiring ocorre no construtor (ou metodo setter) da classe que declara o Autowiring
 * bean = jeito do spring gerenciar objetos dependentes atualmente utilizados "@Component"
     você só pode ter um bean ativo por vez [com @Component] ou ter mais de um com @Primary pro atual
@@ -48,6 +48,15 @@ data.sql = sempre executa ao iniciar
 
 ORM - Hibernate (object relational mapping)
 JMS - Message System (Spark - Kafka?)
-JDBC
-
+JDBC - Java Database Connector
 AOP - Aspect Oriented Programming
+
+// P resolver o wiring
+@Primary - diz qual a dependencia que deve resolver
+@Qualifier("bubble") - por tag do nome
+
+// Escopo de um bean, definido por @Scope
+// @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope("singleton") - mesmo que nada, é o padrão do Spring - cada Bean é o mesmo objeto 
+@Scope("prototype") - cada Bean é um novo objeto
+
