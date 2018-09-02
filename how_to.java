@@ -59,4 +59,40 @@ AOP - Aspect Oriented Programming
 // @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Scope("singleton") - mesmo que nada, é o padrão do Spring - cada Bean é o mesmo objeto 
 @Scope("prototype") - cada Bean é um novo objeto
+@Scope("request") - um Bean por chamada HTTP
+@Scope("session") - um Bean por sessão HTTP
+
+// Fazer Spring procurar Beans em um package diferente do ApplicationContext
+@ComponentScan("package...")
+
+// Bean lifecycle
+@postConstruct - função que será executada logo após a criação do Bean
+@PreDestroy - função executada antes de destruir um Bean
+
+// CDI - Context and Dependency Injection
+// define padrões para as anotations de injeção de dependencia
+@Inject (@Autowired)
+@Named (@Component)
+@Singleton (define scopo de singleton)
+
+// Termos
+IOC Container - prove a inversão de controle
+Application Context
+Bean Factory - tipo ApplicationContext só com menos coisa, mas tem Spring AOP, WEBApplicationContext
+
+// Component Annotations
+@Component - component generica (pode usar em qualquer caso)
+@Repository - encapsula armazenamento, obtenção, busca para um banco relacional
+@Service - Facade servidor de negocios
+@Controller - controlador MVC
+
+// Arquivos de configurações
+file: app.properties
+    external.service.url = http://someserver.dev.com/service
+
+@Value("${external.service.url}")
+private String url;
+
+class:
+@PropertySource("classpath:app.properties")
 
