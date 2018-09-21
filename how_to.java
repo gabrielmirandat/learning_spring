@@ -96,3 +96,64 @@ private String url;
 class:
 @PropertySource("classpath:app.properties")
 
+//########################################################################################################################## 
+JUnit
+assertEquals, assertTrue, assertFalse, assertNotNull, assertNull, assertArrayEquals
+
+@BeforeClass // antes de tudo uma vez
+public static void beforeClass() {}
+@AfterCLass
+public static void afterClass() {}
+@Before // antes de cada teste
+public void before() {}
+@After
+public void after() {}
+
+Mockito
+public interface DataService(){}
+// um stub por tipo de retorno, ruim
+class DataServiceStub implements DataService {
+    @Override
+    public int[] retrieveAllData() {return {4,6,15};}
+}
+// em vez de stub, usar mock, mas fácil dizer o retorno (uma linha, sem ter que criar método)
+DataService dataServiceMock = mock(DataService.class);
+when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {24,15,12});
+SomeBusinessImpl businessImpl = new SomeBusinessImpl(dataServiceMock);
+// com Mockito fica
+@RunWith(MockitoJUnitRunner.class)
+public class SomeBusinessMock{
+    @Mock
+    DataService dataServiceMock;
+
+    @InjectMocks
+    SomeBusinessImpl businessImpl;
+
+    @Test
+    public void testFindTheGreatestFromAllData(){
+        when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {24,15}).thenReturn(...)
+        int result = businessImpl.testFindTheGreatestFromAllData();
+        assetEquals
+    }
+
+}
+.get(0)
+Mockito.anyInt()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
