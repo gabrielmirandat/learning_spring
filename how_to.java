@@ -6,7 +6,7 @@ WEB, H2, Devtools, JPA
 
 http://localhost:8080/h2-console
 
-//########################################################################################################################## 
+//##########################################################################################################################
 
 MAVEN COMMAND SUIT
 
@@ -131,7 +131,7 @@ public class SomeBusinessMock{
 
     @Test
     public void testFindTheGreatestFromAllData(){
-        when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {24,15}).thenReturn(...)
+        Mockito.when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {24,15}).thenReturn(...)
         int result = businessImpl.testFindTheGreatestFromAllData();
         assetEquals
     }
@@ -140,20 +140,33 @@ public class SomeBusinessMock{
 .get(0)
 Mockito.anyInt()
 
+//##########################################################################################################################
+Spring boot
 
+@RestController = Bean lido automaticamente
 
+for (String name: applicationContext.getBeanDefinitionName()){
+    System.out.println(name);
+}
 
+logging.level.org.springframework = DEBUG
 
+Actuator + Hal module - dá informações detalhadas dos beans e da aplicação
 
+DEVTOOLS - auto refresh do spring boot 
 
+//##########################################################################################################################
+AOP
 
+implements CommandLineRunner
+    // intercepta criação dos Beans
+    - void run(String... args) throws Exception;
+        - logger.info
 
+@Aspect 
+    @AfterReturning, @Before, @AfterThrowing
+    @Around - dá o tempo de execução
+    @Pointcuts
+    # CRIAR CUSTOM ANNOTATIONS
 
-
-
-
-
-
-
-
-
+    
